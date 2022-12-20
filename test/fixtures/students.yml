@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email_id: MyString
+  uin: Number
+  employment_status: false
+  is_undergrad: false
+  courses_completed: MyText
+  resume: 
+  transcript: 
+  access_level: MyText
+  application_status: MyText
+  comments: MyString
+  assigned_courses: MyText
+  assigned_sections: MyText
+  rating: 1
+  feedback: MyString
+
+two:
+  name: MyString
+  email_id: MyString
+  uin: Number
+  employment_status: false
+  is_undergrad: false
+  courses_completed: MyText
+  resume: 
+  transcript: 
+  access_level: MyText
+  application_status: MyText
+  comments: MyString
+  assigned_courses: MyText
+  assigned_sections: MyText
+  rating: 1
+  feedback: MyString

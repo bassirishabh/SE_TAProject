@@ -1,0 +1,66 @@
+<html>
+<body>
+  <div class="headers">
+    <%= image_tag("ENGINEERING_logo_HWHT.png", :alt => "rss feed", width: "500em", height: "125em",  align: "left")%>
+    <h1>Assign Courses to Hired TA</h1>
+  </div>
+
+  <header>
+    <div class='container'>
+      <nav>
+        <ul>
+          <li><%=link_to "Home", '/students'  %></li>
+          <li><%=link_to "Students", '/students'  %></li>
+          <li><%=link_to "New Subject", '/subjects/new'  %></li>
+          <li><%=link_to "Assign Professors", '/professors/new'  %></li>
+          <li><%=link_to "Log out", '/users/user/login',:style=> 'position:absolute; margin-left:50%;',:method => "get" %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <br>
+
+  <%= render 'shared/flashes' unless flash.nil?%>
+<main>
+<table id="tables">
+  <tr>
+    <th width='1%', align="center"><%= "Name"%> </th>
+    <th width='1%', align="center"><%= "Email"%> </th>
+    <th width='1%', align="center"><%= "UIN"%> </th>
+    <th width='1%', align="center"><%= "Course name"%> </th>
+    <th width='1%', align="center"><%= "Course section"%> </th>
+    <th width='1%', align="center"> Actions</th>
+  </tr>
+</table>
+
+  <% @students_selected.each do |student| %>
+    <%= form_with(model: student) do |form| %>
+      <table id="tables">
+        <tr>
+          <td width='1%' , align="center"><%= link_to student.name, students_path(method: :get, :search => student.name) %></td>
+          <td width='1%' , align="center"><%= student.email_id %></td>
+          <td width='1%' , align="center"><%= student.uin %></td>
+
+          <td width='1%' , align="center">
+              <%= form.select :assigned_courses, options_for_select(@course_name, selected = student.assigned_courses) %>
+            <br>
+          </td>
+          <td width='1%' , align="center">
+            <% if student.assigned_sections %>
+              <%= form.text_field :assigned_sections, value: student.assigned_sections.join(",") %>
+            <% else %>
+            <%= form.text_field :assigned_sections %>
+            <% end %>
+          </td>
+          <%= hidden_field_tag(:subjects_page,true) %>
+          <td width='1%' , align="center">
+            <%= form.submit "Update" %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  <% end %>
+</main>
+</body>
+</html>

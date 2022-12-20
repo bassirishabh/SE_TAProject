@@ -1,0 +1,22 @@
+
+
+<header>
+  <div class='container'>
+    <nav>
+      <ul>
+        <li><%=link_to "Home", '/students'  %></li>
+        <li><%=link_to "Students", '/students'  %></li>
+        <li><%=link_to "Assign Subjects", '/subjects'  %></li>
+        <li><%=link_to "Edit Subject", edit_subject_path(@subject)  %></li>
+        <li><%=link_to "Log out", '/users/user/login',:style=> 'position:absolute; margin-left:50%;',:method => "get" %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<%= render 'shared/flashes' unless flash.nil?%>
+<%= render @subject %>
+
+<div>
+
+  <%= button_to "Delete this subject", @subject, method: :delete %>
+</div>

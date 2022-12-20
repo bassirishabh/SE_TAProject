@@ -1,0 +1,15 @@
+<h1>Editing student</h1>
+<header>
+  <div class='container'>
+    <nav>
+      <ul>
+        <li><%=link_to "Home", '/students'  %></li>
+        <li><%=link_to "Show Application",@student%></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<%= render 'shared/flashes' unless flash.nil?%>
+<%= render "form", student: @student %>
+
+

@@ -1,0 +1,10 @@
+<h1>New management</h1>
+
+<%= render "form", management: @management %>
+
+<br>
+
+<div>
+  <%= link_to "Back to managements", managements_path %>
+</div>
+<%= button_to "Log out", '/users/user/login', :style=> 'position:absolute; top:0; right:0;', :method => "get" %>
